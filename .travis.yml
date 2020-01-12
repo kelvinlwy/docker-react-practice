@@ -10,3 +10,16 @@ script:
   # CI-mode to make sure the tests will only run once instead of launching the watcher
   # old script: docker run -e docker-react npm run test -- --converage
   - docker run -e CI=true docker-react npm run test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-southeast-2"
+  app: "docker-react-practice"
+  env: "DockerReactPractice-env"
+  bucket_name: "elasticbeanstalk-ap-southeast-2-448288089030"
+  bucket_path: "docker-react-practice"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_KEY"
