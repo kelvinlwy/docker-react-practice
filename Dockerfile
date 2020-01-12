@@ -11,6 +11,7 @@ RUN npm run build  # result is in /app/build
 
 # run phase
 FROM nginx
+EXPOSE 80
 # copy data from other stage
 COPY --from=build-stage /app/build /usr/share/nginx/html
 
